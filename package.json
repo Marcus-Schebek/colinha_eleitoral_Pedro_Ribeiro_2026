@@ -1,0 +1,14 @@
+{
+  "name": "colinha-pedro-ribeiro-1223",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "echo Static build - no compilation required"
+  },
+  "dependencies": {
+    "@imgly/background-removal-node": "^1.4.5"
+  }
+}

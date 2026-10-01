@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFC328">
+  <title>Colinha Eleitoral 2026 - Pedro Ribeiro 1223</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Share+Tech+Mono&display=swap">
+
+  <style>
+    :root {
+      --yellow: #FFC328;
+      --yellow-deep: #E9A800;
+      --cyan: #55E6F2;
+      --pink: #F50067;
+      --black: #000000;
+      --white: #FFFFFF;
+      --green: #00843D;
+      --green-dark: #006A31;
+      --purple: #654B73;
+      --ink-soft: #3a3320;
+      --lcd: #dbdec2;
+      --font: 'Montserrat', 'Poppins', 'Segoe UI', Arial, sans-serif;
+      --font-urn: 'Share Tech Mono', 'Courier New', monospace;
+      --stripe-w: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font);
+      color: var(--black);
+      background-color: var(--yellow);
+      /* grade discreta, como na referência */
+      background-image:
+        linear-gradient(rgba(120, 70, 0, .10) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(120, 70, 0, .10) 1.5px, transparent 1.5px);
+      background-size: 46px 46px;
+      padding-left: var(--stripe-w);
+    }
+
+    /* faixa lateral ciano com borda irregular */
+    .stripe {
+      position: fixed; z-index: 0; top: 0; bottom: 0; left: 0;
+      width: calc(var(--stripe-w) + 10px);
+      background: var(--cyan);
+      clip-path: polygon(0 0, 88% 0, 100% 14%, 92% 32%, 100% 52%, 94% 70%, 100% 88%, 86% 100%, 0 100%);
+      pointer-events: none;
+    }
+
+    button { font-family: inherit; cursor: pointer; }
+    button:focus-visible { outline: 4px solid var(--black); outline-offset: 3px; }
+
+    /* ---------- cabeçalho ---------- */
+    .topbar {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      width: 100%; max-width: 560px; margin: 0 auto;
+      padding: 18px 16px 6px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand h1 { margin: 0; font-size: 19px; font-weight: 900; line-height: 1.05; letter-spacing: -.2px; }
+    .brand p { margin: 3px 0 0; font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+    .tag-uf {
+      flex: none; background: var(--black); color: var(--white);
+      font-size: 12px; font-weight: 800; padding: 6px 10px; border-radius: 6px;
+    }
+    .heart svg { display: block; width: 44px; height: auto; }
+
+    /* ---------- palco ---------- */
+    main {
+      position: relative; z-index: 1;
+      flex: 1; width: 100%; max-width: 560px; margin: 0 auto;
+      padding: 14px 16px 28px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .step { display: flex; flex-direction: column; gap: 18px; }
+
+    .panel {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--black);
+    }
+
+    .lead { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.1; letter-spacing: -.4px; }
+    .sub  { margin: 6px 0 0; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--ink-soft); }
+
+    /* ---------- botões ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 0 20px;
+      font-size: 15px; font-weight: 800;
+      border: 3px solid var(--black); border-radius: 10px;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform .08s, box-shadow .08s;
+    }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--black); }
+    .btn-pink  { background: var(--pink); color: var(--white); }
+    .btn-white { background: var(--white); color: var(--black); }
+    .btn-green { background: var(--green); color: var(--white); }
+    .btn-block { width: 100%; }
+    .btn-link  { background: none; border: 0; box-shadow: none; min-height: 40px; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+    .btn-link:active { transform: none; box-shadow: none; }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+
+    /* ---------- candidato fixo (abertura) ---------- */
+    .anchor { display: flex; gap: 16px; align-items: center; padding: 16px; }
+    .anchor-photo, .fixed-photo, .review-photo {
+      flex: none; background: var(--purple); overflow: hidden; position: relative;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .anchor-photo { width: 104px; aspect-ratio: 161 / 225; padding: 5px 5px 0; }
+    .anchor-photo img, .fixed-photo img, .review-photo img, .urn-photo img {
+      width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block;
+    }
+    .ph-fallback { width: 70%; height: 70%; color: rgba(255,255,255,.55); align-self: center; }
+    .anchor-body { min-width: 0; flex: 1; }
+    .kicker { margin: 0; font-size: 12px; font-weight: 800; }
+    .anchor-name { margin: 2px 0 0; font-size: 24px; font-weight: 900; line-height: 1.05; letter-spacing: -.3px; }
+    .anchor-party { margin: 4px 0 0; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+    .num-row { display: flex; gap: 6px; margin-top: 12px; }
+    .num-box {
+      width: 40px; height: 46px; display: flex; align-items: center; justify-content: center;
+      background: var(--purple); color: var(--white);
+      font-size: 28px; font-weight: 800; border-radius: 4px;
+    }
+
+    /* ---------- urna ---------- */
+    .urn-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; padding: 0 2px; }
+    .urn-head .where { font-weight: 700; color: var(--ink-soft); font-size: 12px; text-align: right; }
+
+    .fixed-vote {
+      display: flex; align-items: center; gap: 12px; padding: 8px 12px 8px 8px;
+      border-radius: 12px; box-shadow: 3px 3px 0 var(--black);
+    }
+    .fixed-photo { width: 38px; height: 52px; padding: 3px 3px 0; }
+    .fixed-vote .meta { min-width: 0; flex: 1; }
+    .fixed-vote .meta small { display: block; font-size: 11px; font-weight: 800; color: var(--ink-soft); }
+    .fixed-vote .meta strong { display: block; font-size: 15px; font-weight: 900; line-height: 1.1; overflow-wrap: anywhere; }
+    .fixed-vote .nr { font-family: var(--font-urn); font-size: 22px; font-weight: 700; background: var(--purple); color: var(--white); padding: 4px 9px; border-radius: 5px; letter-spacing: 2px; }
+    .fixed-vote .lock { font-size: 10px; font-weight: 800; background: var(--black); color: var(--white); padding: 3px 6px; border-radius: 4px; }
+
+    .urn-bezel {
+      background: #151515; border-radius: 18px; padding: 12px;
+      box-shadow: 5px 5px 0 var(--black);
+    }
+    .screen {
+      background: var(--lcd); color: #1c1c14;
+      border-radius: 8px; padding: 14px 14px 12px;
+      min-height: 250px; display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: inset 0 0 14px rgba(0,0,0,.35);
+    }
+    .screen .top { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #55553f; }
+    .screen .office { margin-top: 2px; font-size: 21px; font-weight: 900; text-transform: uppercase; letter-spacing: .02em; }
+    .screen .line { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 12px; }
+    .screen .lbl { display: block; font-size: 11px; font-weight: 700; color: #55553f; margin-bottom: 4px; }
+    .line > div:first-child { flex: 1 1 auto; min-width: 0; }
+    .digits { display: flex; gap: 7px; max-width: calc(5 * 40px + 4 * 7px); }
+    .digit {
+      flex: 1 1 0; min-width: 0; max-width: 40px;
+      height: 50px; border: 2px solid rgba(40,40,30,.55); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-urn); font-size: 30px; font-weight: 700; background: rgba(255,255,255,.28);
+    }
+    .digit.active { border-color: #111; background: rgba(255,255,255,.6); }
+    .cursor { width: 2px; height: 28px; background: #111; animation: blink 1s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+
+    .urn-photo {
+      flex: none; width: 76px; aspect-ratio: 161 / 225; background: rgba(0,0,0,.12);
+      border: 1px solid rgba(0,0,0,.35); display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+    }
+    .urn-photo .ph-fallback { color: #7b7b66; }
+
+    .info { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,.28); min-height: 64px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .info .nm { font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .info .nv { font-size: 18px; font-weight: 900; line-height: 1.15; overflow-wrap: anywhere; }
+    .info .pt { font-size: 12px; font-weight: 700; color: #3a3a2c; }
+    .info .idle { font-size: 12px; font-weight: 600; font-style: italic; color: #55553f; }
+    .info .white { text-align: center; font-size: 22px; font-weight: 900; letter-spacing: .12em; }
+    .info .err {
+      display: flex; gap: 8px; align-items: flex-start; font-size: 12px; font-weight: 800; color: #8d0f0f;
+      background: rgba(180,0,0,.09); border: 1px solid rgba(180,0,0,.3); border-radius: 5px; padding: 8px;
+    }
+    .info .err svg { width: 16px; height: 16px; flex: none; margin-top: 1px; }
+    .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid #222; border-top-color: transparent; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: -2px; margin-right: 8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading { font-size: 12px; font-weight: 800; }
+
+    .keypad { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 300px; width: 100%; margin: 0 auto; }
+    .key {
+      height: 52px; background: #2c2c2c; color: var(--white);
+      font-family: var(--font-urn); font-size: 24px; font-weight: 700;
+      border: 0; border-bottom: 4px solid #000; border-radius: 8px;
+    }
+    .key:active { transform: translateY(2px); border-bottom-width: 2px; }
+    .keys .gap { visibility: hidden; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 8px; }
+    .act {
+      height: 54px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+      border: 0; border-bottom: 4px solid rgba(0,0,0,.45); border-radius: 8px;
+    }
+    .act:active { transform: translateY(2px); border-bottom-width: 2px; }
+    .act-white   { background: var(--white); color: var(--black); }
+    .act-correct { background: var(--pink); color: var(--white); }
+    .act-confirm { background: var(--green); color: var(--white); font-size: 13px; }
+    .act-confirm:disabled { background: #3b3b3b; color: #777; border-bottom-color: #000; cursor: not-allowed; }
+
+    /* ---------- revisão ---------- */
+    .review-list { display: flex; flex-direction: column; gap: 10px; }
+    .review-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 10px 8px 8px; border-radius: 12px; box-shadow: 3px 3px 0 var(--black); }
+    .review-item .left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .review-photo { width: 42px; aspect-ratio: 161 / 225; padding: 3px 3px 0; background: var(--pink); }
+    .review-photo.fixed { background: var(--purple); }
+    .review-item .t { font-size: 11px; font-weight: 800; color: var(--ink-soft); }
+    .review-item .n { font-size: 15px; font-weight: 900; overflow-wrap: anywhere; line-height: 1.15; }
+    .review-item .p { font-size: 11px; font-weight: 700; color: var(--ink-soft); }
+    .review-item .right { display: flex; align-items: center; gap: 6px; flex: none; }
+    .pill-num { font-family: var(--font-urn); font-size: 16px; font-weight: 700; padding: 4px 8px; border-radius: 5px; background: var(--black); color: var(--white); letter-spacing: 1px; }
+    .pill-num.fixed { background: var(--purple); }
+    .icon-btn { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; background: var(--yellow); border: 2px solid var(--black); border-radius: 8px; }
+    .icon-btn svg { width: 18px; height: 18px; }
+    .missing { font-size: 12px; font-weight: 800; color: #8d0f0f; }
+    .row-btns { display: flex; gap: 12px; }
+    .row-btns .btn { flex: 1; }
+
+    /* ---------- prévia / exportação ---------- */
+    .export-grid { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+    .preview-frame {
+      width: min(100%, 330px); aspect-ratio: 9 / 16; background: var(--white);
+      border: 3px solid var(--black); border-radius: 14px; box-shadow: 6px 6px 0 var(--black);
+      overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .preview-frame img { width: 100%; height: 100%; display: block; }
+    .preview-loading { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; padding: 16px; text-align: center; }
+    .preview-loading .spin { width: 28px; height: 28px; border-width: 4px; margin: 0; }
+    .export-side { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 330px; }
+    .dims { margin: 0; text-align: center; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+
+    footer { position: relative; z-index: 1; text-align: center; padding: 14px 16px 22px; font-size: 11px; font-weight: 700; color: var(--ink-soft); }
+
+    @media (min-width: 720px) {
+      :root { --stripe-w: 44px; }
+      .topbar, main { max-width: 600px; }
+      .lead { font-size: 30px; }
+    }
+    @media (min-width: 880px) {
+      main { max-width: 860px; }
+      .topbar { max-width: 860px; }
+      #step-export .export-grid { flex-direction: row; justify-content: center; align-items: flex-start; gap: 36px; }
+      #step-export .export-side { padding-top: 12px; }
+      #step-urn { max-width: 560px; margin: 0 auto; width: 100%; }
+      #step-splash, #step-review { max-width: 560px; margin: 0 auto; width: 100%; }
+    }
+    @media (max-width: 380px) {
+      .digit { height: 44px; font-size: 26px; }
+      .digits { gap: 5px; }
+      .urn-photo { width: 64px; }
+      .anchor-photo { width: 88px; }
+      .num-box { width: 34px; height: 40px; font-size: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cursor, .spin { animation-duration: 3s; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stripe" aria-hidden="true"></div>
+
+  <!-- CABEÇALHO -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="heart" id="brand-heart" aria-hidden="true"></span>
+      <div>
+        <h1>Colinha Eleitoral 2026</h1>
+        <p>Monte seu voto para o Rio Grande do Sul</p>
+      </div>
+    </div>
+    <span class="tag-uf">RS • 2026</span>
+  </header>
+
+  <main id="main-container">
+
+    <!-- TELA 1: ABERTURA -->
+    <section id="step-splash" class="step">
+      <div>
+        <h2 class="lead">Monte sua colinha</h2>
+        <p class="sub">Pedro Ribeiro já está no topo. Digite os outros votos como na urna e compartilhe nas suas redes.</p>
+      </div>
+
+      <div class="panel anchor" id="anchor-card">
+        <div class="anchor-photo">
+          <img id="anchor-photo" alt="Foto de Pedro Ribeiro" hidden>
+          <svg class="ph-fallback" id="anchor-photo-fallback" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z"/></svg>
+        </div>
+        <div class="anchor-body">
+          <p class="kicker">DEPUTADO FEDERAL</p>
+          <h3 class="anchor-name" id="anchor-name">PEDRO RIBEIRO</h3>
+          <p class="anchor-party" id="anchor-party"></p>
+          <div class="num-row" id="anchor-digits" aria-label="Número 1223"></div>
+        </div>
+      </div>
+
+      <button class="btn btn-pink btn-block" onclick="app.startFlow()">
+        <span>Montar minha colinha</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+    </section>
+
+    <!-- TELA 2: URNA ELETRÔNICA SIMULADA -->
+    <section id="step-urn" class="step" hidden>
+      <div class="urn-head">
+        <span id="urn-step-indicator">Passo 1 de 5</span>
+        <span class="where" id="urn-where">Candidatos do RS</span>
+      </div>
+
+      <!-- voto já definido: Deputado Federal -->
+      <div class="panel fixed-vote" aria-label="Voto de Deputado Federal já definido">
+        <div class="fixed-photo">
+          <img id="fixed-photo" alt="" hidden>
+          <svg class="ph-fallback" id="fixed-photo-fallback" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z"/></svg>
+        </div>
+        <div class="meta">
+          <small>Deputado Federal</small>
+          <strong id="fixed-name">PEDRO RIBEIRO</strong>
+        </div>
+        <span class="nr" id="fixed-number">1223</span>
+        <span class="lock">FIXO</span>
+      </div>
+
+      <div class="urn-bezel">
+        <div class="screen" aria-live="polite">
+          <div>
+            <div class="top">SEU VOTO PARA</div>
+            <div class="office" id="urn-office-title">DEPUTADO ESTADUAL</div>
+
+            <div class="line">
+              <div>
+                <span class="lbl">Número:</span>
+                <div class="digits" id="urn-digits-container"></div>
+              </div>
+              <div class="urn-photo" id="urn-candidate-photo-wrapper" hidden>
+                <img id="urn-candidate-photo" alt="Foto do candidato" hidden>
+                <svg class="ph-fallback" id="urn-candidate-photo-fallback" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div id="urn-status-loading" class="loading" hidden><span class="spin"></span>Buscando candidato na base local...</div>
+            <div id="urn-status-found" hidden>
+              <div class="nm">Nome:</div>
+              <div class="nv" id="urn-candidate-name">---</div>
+              <div class="pt" id="urn-candidate-party">---</div>
+            </div>
+            <div id="urn-status-white" class="white" hidden>VOTO EM BRANCO</div>
+            <div id="urn-status-error" class="err" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5" stroke-linecap="round"/></svg>
+              <span id="urn-error-message">Candidato não encontrado na base local. Confira o número e tente novamente.</span>
+            </div>
+            <div id="urn-status-idle" class="idle">Digite o número do candidato usando o teclado abaixo.</div>
+          </div>
+        </div>
+
+        <div class="keypad">
+          <div class="keys">
+            <button class="key" onclick="app.pressKey('1')">1</button>
+            <button class="key" onclick="app.pressKey('2')">2</button>
+            <button class="key" onclick="app.pressKey('3')">3</button>
+            <button class="key" onclick="app.pressKey('4')">4</button>
+            <button class="key" onclick="app.pressKey('5')">5</button>
+            <button class="key" onclick="app.pressKey('6')">6</button>
+            <button class="key" onclick="app.pressKey('7')">7</button>
+            <button class="key" onclick="app.pressKey('8')">8</button>
+            <button class="key" onclick="app.pressKey('9')">9</button>
+            <span class="gap"></span>
+            <button class="key" onclick="app.pressKey('0')">0</button>
+            <span class="gap"></span>
+          </div>
+          <div class="actions">
+            <button class="act act-white" onclick="app.pressWhite()">Branco</button>
+            <button class="act act-correct" onclick="app.pressCorrect()">Corrige</button>
+            <button class="act act-confirm" id="btn-confirm" onclick="app.pressConfirm()" disabled>Confirma</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 3: REVISÃO -->
+    <section id="step-review" class="step" hidden>
+      <div>
+        <h2 class="lead">Revise seus votos</h2>
+        <p class="sub">Confira tudo antes de ver a imagem da sua colinha.</p>
+      </div>
+      <div class="review-list" id="review-list"></div>
+      <div class="row-btns">
+        <button class="btn btn-white" onclick="app.goToStep('urn')">Corrigir votos</button>
+        <button class="btn btn-pink" onclick="app.generateExport()">Ver minha colinha</button>
+      </div>
+    </section>
+
+    <!-- TELA 4: PRÉVIA E EXPORTAÇÃO -->
+    <section id="step-export" class="step" hidden>
+      <div>
+        <h2 class="lead">Sua colinha está pronta</h2>
+        <p class="sub">Esta é a imagem que será salva ou compartilhada, sem diferença.</p>
+      </div>
+
+      <div class="export-grid">
+        <div class="preview-frame">
+          <div class="preview-loading" id="export-loading">
+            <span class="spin"></span>
+            <span>Montando a imagem 1080 × 1920...</span>
+          </div>
+          <img id="export-image-result" alt="Prévia da sua colinha de votação" hidden>
+        </div>
+
+        <div class="export-side">
+          <button class="btn btn-pink btn-block" id="btn-share" onclick="app.shareImage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>
+            <span>Compartilhar nos Stories</span>
+          </button>
+          <button class="btn btn-white btn-block" id="btn-download" onclick="app.downloadImage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+            <span>Baixar imagem (PNG)</span>
+          </button>
+          <button class="btn btn-link btn-block" onclick="app.goToStep('review')">Voltar para a lista</button>
+          <p class="dims" id="export-dims"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>Eleições 2026 • Estado do Rio Grande do Sul</footer>
+
+  <script>
+/* =========================================================================
+   COLINHA — PEDRO RIBEIRO · DEPUTADO FEDERAL · 1223
+   -------------------------------------------------------------------------
+   UM ÚNICO renderizador de card: renderColinhaCanvas(). A prévia na tela é o
+   próprio PNG gerado por ele (mesmo blob que é baixado/compartilhado), então
+   prévia e exportação não têm como divergir. O tamanho do canvas é fixo em
+   1080 x 1920 e não depende da viewport nem do devicePixelRatio.
+
+   Layout: o card é montado em "flex" calculado — cada linha é
+   [foto | coluna de texto], a coluna de texto empilha cargo > nome > números,
+   e o bloco de números é [caixas | CONFIRMA]. Tudo é derivado de medidas reais
+   da fonte carregada, sem coordenadas soltas por candidato.
+   ========================================================================= */
+const COLINHA = {
+  W: 1080,
+  H: 1920,
+  FONT: "'Montserrat','Poppins','Segoe UI',Arial,sans-serif",
+  YELLOW: '#FFC328',
+  CYAN: '#55E6F2',
+  PINK: '#F50067',
+  BLACK: '#000000',
+  WHITE: '#FFFFFF',
+  GREEN: '#00843D',
+  PURPLE: '#654B73'
+};
+
+/* coração em pixel art (9 x 8) */
+const HEART_BITMAP = [
+  '.XX...XX.',
+  'XXXX.XXXX',
+  'XXXXXXXXX',
+  'XXXXXXXXX',
+  '.XXXXXXX.',
+  '..XXXXX..',
+  '...XXX...',
+  '....X....'
+];
+const HEART_LIGHT = ['1,1', '2,1', '1,2'];
+
+function heartSvg() {
+  const cells = [];
+  HEART_BITMAP.forEach((row, y) => Array.from(row).forEach((c, x) => { if (c === 'X') cells.push([x, y]); }));
+  const out = cells.map(([x, y]) => `<rect x="${x - 0.38}" y="${y - 0.38}" width="1.76" height="1.76" fill="#000"/>`).join('');
+  const fill = cells.map(([x, y]) => {
+    const light = HEART_LIGHT.includes(`${x},${y}`);
+    return `<rect x="${x}" y="${y}" width="1" height="1" fill="${light ? '#FF8FC0' : '#F50067'}"/>`;
+  }).join('');
+  return `<svg viewBox="-0.5 -0.5 10 9" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${out}${fill}</svg>`;
+}
+
+/* ---------- utilitários de canvas ---------- */
+function cLoadImage(src) {
+  return new Promise((resolve) => {
+    if (!src) return resolve(null);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+async function cEnsureFonts() {
+  if (!document.fonts || !document.fonts.load) return;
+  const sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÃÕÇ0123456789';
+  const load = Promise.all([
+    document.fonts.load('500 24px Montserrat', sample),
+    document.fonts.load('800 24px Montserrat', sample),
+    document.fonts.load('900 24px Montserrat', sample)
+  ]).then(() => document.fonts.ready);
+  // se a fonte não chegar (rede), segue com a fonte reserva em vez de travar
+  await Promise.race([load.catch(() => {}), new Promise((r) => setTimeout(r, 5000))]);
+}
+
+function cFont(o) { return `${o.weight || 400} ${o.size}px ${COLINHA.FONT}`; }
+
+function cWidth(ctx, text, o) {
+  ctx.font = cFont(o);
+  const sp = o.spacing || 0;
+  if (!sp) return ctx.measureText(text).width;
+  const chars = Array.from(text);
+  let w = 0;
+  chars.forEach((ch) => { w += ctx.measureText(ch).width; });
+  return w + sp * Math.max(0, chars.length - 1);
+}
+
+/* altura real (ascendente) de um glifo de referência */
+function cCap(ctx, o, ref) {
+  ctx.font = cFont(o);
+  return ctx.measureText(ref || 'H').actualBoundingBoxAscent;
+}
+
+/* y = linha de base. align: left | center | right */
+function cText(ctx, text, x, y, o) {
+  ctx.font = cFont(o);
+  ctx.fillStyle = o.color || '#000';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  const w = cWidth(ctx, text, o);
+  let sx = x;
+  if (o.align === 'center') sx = x - w / 2;
+  else if (o.align === 'right') sx = x - w;
+  if (!o.spacing) {
+    ctx.fillText(text, sx, y);
+  } else {
+    let cx = sx;
+    Array.from(text).forEach((ch) => {
+      ctx.fillText(ch, cx, y);
+      cx += ctx.measureText(ch).width + o.spacing;
+    });
+  }
+  return w;
+}
+
+function cFit(ctx, text, o, maxW, minRatio = 0.5) {
+  let size = o.size;
+  const min = o.size * minRatio;
+  while (size > min && cWidth(ctx, text, { ...o, size }) > maxW) size -= 1;
+  return { ...o, size };
+}
+
+function cEllipsis(ctx, text, o, maxW) {
+  if (cWidth(ctx, text, o) <= maxW) return text;
+  let t = text;
+  while (t.length > 1 && cWidth(ctx, t + '…', o) > maxW) t = t.slice(0, -1);
+  return t.trimEnd() + '…';
+}
+
+function cRR(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+/* foto proporcional (contain), encostada na base do quadro; nunca estica */
+function cDrawContain(ctx, img, x, y, w, h) {
+  const s = Math.min(w / img.width, h / img.height);
+  const dw = img.width * s;
+  const dh = img.height * s;
+  ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh), dw, dh);
+}
+
+/* quadro colorido + foto (ou silhueta quando não há foto) */
+function cPhotoFrame(ctx, img, x, y, w, h, color, mat) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, w, h);
+  const ix = x + mat, iy = y + mat, iw = w - mat * 2, ih = h - mat;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(ix, iy, iw, ih);
+  ctx.clip();
+  if (img) {
+    cDrawContain(ctx, img, ix, iy, iw, ih);
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath();
+    ctx.arc(ix + iw / 2, iy + ih * 0.36, iw * 0.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(ix + iw / 2, iy + ih * 1.0, iw * 0.4, ih * 0.34, 0, Math.PI, 0);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+/* ---------- fundo e decoração ---------- */
+function cBackground(ctx) {
+  const { W, H, YELLOW, CYAN } = COLINHA;
+  ctx.fillStyle = YELLOW;
+  ctx.fillRect(0, 0, W, H);
+
+  // grade discreta
+  ctx.strokeStyle = 'rgba(120,70,0,0.10)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let x = 0; x <= W; x += 54) { ctx.moveTo(x + 0.5, 0); ctx.lineTo(x + 0.5, H); }
+  for (let y = 0; y <= H; y += 54) { ctx.moveTo(0, y + 0.5); ctx.lineTo(W, y + 0.5); }
+  ctx.stroke();
+
+  // faixa ciano com borda irregular
+  const edge = [[0, 52], [150, 44], [420, 58], [760, 70], [1100, 84], [1500, 80], [1760, 70], [1920, 42]];
+  ctx.fillStyle = CYAN;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  edge.forEach(([y, x]) => ctx.lineTo(x, y));
+  ctx.lineTo(0, H);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function cHeart(ctx, x, y, cell) {
+  const filled = [];
+  HEART_BITMAP.forEach((row, ry) => Array.from(row).forEach((c, rx) => { if (c === 'X') filled.push([rx, ry]); }));
+  const o = Math.round(cell * 0.38);
+  ctx.fillStyle = '#000';
+  filled.forEach(([rx, ry]) => ctx.fillRect(x + rx * cell - o, y + ry * cell - o, cell + o * 2, cell + o * 2));
+  filled.forEach(([rx, ry]) => {
+    ctx.fillStyle = HEART_LIGHT.includes(`${rx},${ry}`) ? '#FF8FC0' : COLINHA.PINK;
+    ctx.fillRect(x + rx * cell, y + ry * cell, cell, cell);
+  });
+}
+
+/* ---------- bloco de números: [caixas | CONFIRMA] ---------- */
+function cVoteBlock(ctx, row, x, midY, availW, theme) {
+  const GAP = 10, BTN_GAP = 26, BOX_H = 100, BOX_MAX_W = 92;
+
+  const confO = { weight: 800, size: 23, spacing: 1, color: COLINHA.WHITE };
+  const btnW = Math.ceil(cWidth(ctx, 'CONFIRMA', confO) + 52);
+  const btnH = 62;
+  const boxesAvail = availW - btnW - BTN_GAP;
+
+  const isWhite = !!row.isWhite;
+  const digits = isWhite ? ['BRANCO'] : Array.from(String(row.number));
+  const n = digits.length;
+
+  const boxW = isWhite
+    ? Math.min(boxesAvail, BOX_MAX_W * 4 + GAP * 3)
+    : Math.min(BOX_MAX_W, Math.floor((boxesAvail - GAP * (n - 1)) / n));
+  const boxesW = n * boxW + (n - 1) * GAP;
+  const top = midY - BOX_H / 2;
+
+  digits.forEach((d, i) => {
+    const bx = x + i * (boxW + GAP);
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.22)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 4;
+    ctx.fillStyle = theme.boxBorder;
+    ctx.fillRect(bx, top, boxW, BOX_H);
+    ctx.restore();
+    ctx.fillStyle = theme.boxFill;
+    ctx.fillRect(bx + 3, top + 3, boxW - 6, BOX_H - 6);
+
+    // dígito centralizado pela altura REAL do glifo e sempre dentro da caixa
+    let dO = { weight: 800, size: 84, color: theme.digit, align: 'center' };
+    dO = cFit(ctx, d, dO, boxW - 22, 0.3);
+    const cap = cCap(ctx, dO, '0');
+    cText(ctx, d, bx + boxW / 2, top + BOX_H / 2 + cap / 2, dO);
+  });
+
+  const btnX = x + boxesW + BTN_GAP;
+  const btnY = midY - btnH / 2;
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.25)';
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetY = 3;
+  cRR(ctx, btnX, btnY, btnW, btnH, 8);
+  ctx.fillStyle = COLINHA.GREEN;
+  ctx.fill();
+  ctx.restore();
+  cText(ctx, 'CONFIRMA', btnX + btnW / 2, btnY + btnH / 2 + cCap(ctx, confO) / 2, { ...confO, align: 'center' });
+
+  return { height: BOX_H };
+}
+
+/* ---------- uma linha: [foto | cargo > nome > números] ---------- */
+function cRow(ctx, row, y, L) {
+  const theme = row.fixed
+    ? { frame: COLINHA.PURPLE, boxFill: COLINHA.PURPLE, boxBorder: '#4B3858', digit: COLINHA.WHITE }
+    : { frame: COLINHA.PINK, boxFill: COLINHA.WHITE, boxBorder: '#CDCCCF', digit: COLINHA.BLACK };
+
+  cPhotoFrame(ctx, row.photo, L.photoX, y, L.photoW, L.photoH, theme.frame, 7);
+
+  const labelO = { weight: 800, size: 26, spacing: 0.5, color: COLINHA.BLACK };
+  let nameO = { weight: 900, size: 66, color: COLINHA.BLACK };
+  const name = String(row.name || '').toUpperCase();
+  nameO = cFit(ctx, name, nameO, L.textW, 0.5);
+  const nameShown = cEllipsis(ctx, name, nameO, L.textW);
+
+  // O espaçamento vertical é CONSTANTE para todas as linhas (mesma altura de bloco),
+  // reservando a altura de uma maiúscula acentuada (Ã, Á, Ô...) no tamanho nominal
+  // do nome. Assim os cargos/nomes/números ficam alinhados entre candidatos e o
+  // acento nunca encosta no cargo acima, mesmo quando o nome é reduzido para caber.
+  const labelCap = cCap(ctx, labelO);
+  const nameAsc = cCap(ctx, { weight: 900, size: 66 }, 'Ã');
+  const BOX_H = 100, G1 = 6, G2 = 18;
+  const block = labelCap + G1 + nameAsc + G2 + BOX_H;
+  const top = y + (L.photoH - block) / 2;
+
+  const labelBase = top + labelCap;
+  const nameBase = labelBase + G1 + nameAsc;
+  const votesMid = nameBase + G2 + BOX_H / 2;
+
+  cText(ctx, String(row.label || '').toUpperCase(), L.textX, labelBase, labelO);
+  cText(ctx, nameShown, L.textX, nameBase, nameO);
+  cVoteBlock(ctx, row, L.textX, votesMid, L.textW, theme);
+}
+
+/* ---------- desenho completo (ÚNICA fonte da verdade do card) ---------- */
+async function renderColinhaCanvas(data) {
+  await cEnsureFonts();
+
+  const { W, H } = COLINHA;
+  const canvas = document.createElement('canvas');
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  cBackground(ctx);
+  cHeart(ctx, 930, 52, 11);
+
+  // coluna da foto + coluna de texto (a foto é SEMPRE a primeira coluna, à esquerda)
+  const L = {
+    photoX: 150, photoW: 169, photoH: 236,
+    top: 150, gap: 28, textGap: 30
+  };
+  L.textX = L.photoX + L.photoW + L.textGap;
+  L.textW = (W - 56) - L.textX;
+
+  const all = [{ ...data.anchor, fixed: true }, ...data.rows];
+  all.forEach((row, i) => cRow(ctx, row, L.top + i * (L.photoH + L.gap), L));
+
+  // número do candidato no canto, como na referência
+  const endY = L.top + all.length * L.photoH + (all.length - 1) * L.gap;
+  const bigO = { weight: 900, size: 150, color: COLINHA.WHITE };
+  const bigCap = cCap(ctx, bigO, '0');
+  const baseY = Math.min(H - 60, endY + 60 + bigCap);
+  ctx.save();
+  ctx.translate(W - 56, baseY);
+  ctx.transform(1, 0, -0.2, 1, 0, 0);
+  cText(ctx, String(data.anchor.number), 6, 7, { ...bigO, color: 'rgba(0,0,0,0.18)', align: 'right' });
+  cText(ctx, String(data.anchor.number), 0, 0, { ...bigO, align: 'right' });
+  ctx.restore();
+
+  return canvas;
+}
+
+/* =========================================================================
+   URNA
+   ========================================================================= */
+
+// Cargos preenchidos pelo usuário, na ordem da urna.
+// Deputado Federal NÃO entra aqui: é o candidato fixo (ANCHOR_CANDIDATE).
+const OFFICES_CONFIG = [
+  { id: 'DEPUTADO_ESTADUAL', officeApi: 'DEPUTADO_ESTADUAL', title: 'Deputado Estadual', digits: 5 },
+  { id: 'SENADOR_1', officeApi: 'SENADOR', title: 'Senador (1º Voto)', digits: 3 },
+  { id: 'SENADOR_2', officeApi: 'SENADOR', title: 'Senador (2º Voto)', digits: 3 },
+  { id: 'GOVERNADOR', officeApi: 'GOVERNADOR', title: 'Governador', digits: 2 },
+  { id: 'PRESIDENTE', officeApi: 'PRESIDENTE', title: 'Presidente', digits: 2 }
+];
+
+// Rótulos do card (a referência flexiona Senador/Governador; Deputado e Presidente não)
+const CARD_LABELS = {
+  DEPUTADO_ESTADUAL: { M: 'DEPUTADO ESTADUAL', F: 'DEPUTADO ESTADUAL' },
+  SENADOR_1: { M: 'SENADOR', F: 'SENADORA' },
+  SENADOR_2: { M: 'SENADOR', F: 'SENADORA' },
+  GOVERNADOR: { M: 'GOVERNADOR', F: 'GOVERNADORA' },
+  PRESIDENTE: { M: 'PRESIDENTE', F: 'PRESIDENTE' }
+};
+
+// Candidato fixo. A foto padrão segue a convenção local F{UF}{SQ_CANDIDATO}_div.jpg
+// e só é usada se o lookup falhar; quando responde, vale o photoUrl do lookup.
+const ANCHOR_CANDIDATE = {
+  office: 'DEPUTADO_FEDERAL',
+  officeTitle: 'Deputado Federal',
+  uf: 'RS',
+  number: '1223',
+  name: 'PEDRO RIBEIRO',
+  party: { acronym: '', name: null },
+  photoUrl: '/api/candidates/photo?id=210002537047&uf=RS'
+};
+
+const FILE_BASENAME = 'colinha-pedro-ribeiro-1223';
+
+class ColinhaApp {
+  constructor() {
+    this.currentStepIndex = 0;
+    this.currentCandidateResult = null;
+    this.typedDigits = '';
+    this.generatedBlob = null;
+    this.previewUrl = null;
+    this.lookupToken = 0;
+
+    this.colinhaState = {
+      DEPUTADO_FEDERAL: { ...ANCHOR_CANDIDATE, confirmed: true },
+      DEPUTADO_ESTADUAL: null,
+      SENADOR_1: null,
+      SENADOR_2: null,
+      GOVERNADOR: null,
+      PRESIDENTE: null
+    };
+
+    this.init();
+  }
+
+  async init() {
+    document.getElementById('brand-heart').innerHTML = heartSvg();
+    this.renderAnchorDigits();
+    this.bindKeyboard();
+    this.renderAnchorCard();
+    await this.loadAnchorData();
+  }
+
+  // Resolve o Pedro Ribeiro na base local:
+  // /api/candidates/lookup?uf=RS&office=DEPUTADO_FEDERAL&number=1223
+  async loadAnchorData() {
+    try {
+      const data = await this.fetchCandidate('DEPUTADO_FEDERAL', ANCHOR_CANDIDATE.number);
+      if (data && data.found) {
+        this.colinhaState.DEPUTADO_FEDERAL = {
+          ...this.colinhaState.DEPUTADO_FEDERAL,
+          name: data.name || ANCHOR_CANDIDATE.name,
+          party: data.party || ANCHOR_CANDIDATE.party,
+          gender: data.gender || null,
+          photoUrl: data.photoUrl || ANCHOR_CANDIDATE.photoUrl
+        };
+      }
+    } catch (e) {
+      console.warn('Não foi possível carregar os dados locais do candidato fixo; usando o padrão.', e);
+    } finally {
+      this.renderAnchorCard();
+    }
+  }
+
+  setPhoto(imgEl, fallbackEl, url) {
+    imgEl.hidden = true;
+    if (fallbackEl) fallbackEl.hidden = false;
+    if (!url) return;
+    imgEl.onload = () => { imgEl.hidden = false; if (fallbackEl) fallbackEl.hidden = true; };
+    imgEl.onerror = () => { imgEl.hidden = true; if (fallbackEl) fallbackEl.hidden = false; };
+    imgEl.src = url;
+  }
+
+  renderAnchorDigits() {
+    const box = document.getElementById('anchor-digits');
+    box.innerHTML = '';
+    Array.from(ANCHOR_CANDIDATE.number).forEach((d) => {
+      const el = document.createElement('div');
+      el.className = 'num-box';
+      el.textContent = d;
+      box.appendChild(el);
+    });
+  }
+
+  renderAnchorCard() {
+    const a = this.colinhaState.DEPUTADO_FEDERAL;
+    const name = String(a.name || '').toUpperCase();
+    document.getElementById('anchor-name').textContent = name;
+    document.getElementById('anchor-party').textContent = a.party?.acronym ? `Partido: ${a.party.acronym}` : '';
+    document.getElementById('fixed-name').textContent = name;
+    document.getElementById('fixed-number').textContent = a.number;
+    this.setPhoto(document.getElementById('anchor-photo'), document.getElementById('anchor-photo-fallback'), a.photoUrl);
+    this.setPhoto(document.getElementById('fixed-photo'), document.getElementById('fixed-photo-fallback'), a.photoUrl);
+  }
+
+  // Consulta a base local. Presidente usa a base nacional (BR); os demais, RS.
+  async fetchCandidate(office, number) {
+    const normalizedOffice = String(office || '').trim().toUpperCase();
+    const normalizedNumber = String(number || '').trim();
+    const lookupUf = normalizedOffice === 'PRESIDENTE' ? 'BR' : 'RS';
+
+    const params = new URLSearchParams({ uf: lookupUf, office: normalizedOffice, number: normalizedNumber });
+    const res = await fetch(`/api/candidates/lookup?${params.toString()}`, { method: 'GET', cache: 'no-store' });
+
+    let data = null;
+    const contentType = res.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      data = await res.json();
+    } else {
+      const text = await res.text();
+      data = { found: false, source: 'local', error: text || `Erro HTTP ${res.status}` };
+    }
+
+    if (!res.ok) {
+      const error = new Error(data?.error || `Erro HTTP ${res.status}`);
+      error.status = res.status;
+      error.data = data;
+      throw error;
+    }
+    return data;
+  }
+
+  // Navegação entre telas
+  goToStep(stepName) {
+    ['splash', 'urn', 'review', 'export'].forEach((s) => {
+      document.getElementById(`step-${s}`).hidden = true;
+    });
+    document.getElementById(`step-${stepName}`).hidden = false;
+    this.currentScreen = stepName;
+    window.scrollTo({ top: 0 });
+
+    if (stepName === 'urn') this.setupUrnStep(this.currentStepIndex);
+    else if (stepName === 'review') this.renderReviewList();
+  }
+
+  startFlow() {
+    this.currentStepIndex = 0; // primeiro cargo digitado pelo usuário: Deputado Estadual
+    this.goToStep('urn');
+  }
+
+  setupUrnStep(index) {
+    this.currentStepIndex = index;
+    const config = OFFICES_CONFIG[index];
+    this.typedDigits = '';
+    this.currentCandidateResult = null;
+    this.lookupToken += 1;
+
+    document.getElementById('urn-step-indicator').textContent = `Passo ${index + 1} de ${OFFICES_CONFIG.length}`;
+    document.getElementById('urn-where').textContent =
+      config.officeApi === 'PRESIDENTE' ? 'Candidatos a Presidente (nacional)' : 'Candidatos do RS';
+    document.getElementById('urn-office-title').textContent = config.title;
+
+    this.renderUrnDigits();
+    this.updateUrnStatus('idle');
+    this.toggleConfirmButton(false);
+  }
+
+  renderUrnDigits() {
+    const config = OFFICES_CONFIG[this.currentStepIndex];
+    const container = document.getElementById('urn-digits-container');
+    container.innerHTML = '';
+    const isWhite = this.typedDigits === 'BRANCO';
+
+    for (let i = 0; i < config.digits; i++) {
+      const char = isWhite ? '' : (this.typedDigits[i] || '');
+      const active = !isWhite && i === this.typedDigits.length && this.typedDigits.length < config.digits;
+
+      const box = document.createElement('div');
+      box.className = `digit${active ? ' active' : ''}`;
+      if (char) {
+        box.textContent = char;
+      } else if (active) {
+        const c = document.createElement('span');
+        c.className = 'cursor';
+        box.appendChild(c);
+      }
+      container.appendChild(box);
+    }
+  }
+
+  pressKey(digit) {
+    const config = OFFICES_CONFIG[this.currentStepIndex];
+    if (this.typedDigits === 'BRANCO') return;
+    if (this.typedDigits.length < config.digits) {
+      this.typedDigits += digit;
+      this.renderUrnDigits();
+      if (this.typedDigits.length === config.digits) this.handleNumberComplete();
+    }
+  }
+
+  pressWhite() {
+    this.lookupToken += 1;
+    this.typedDigits = 'BRANCO';
+    this.currentCandidateResult = null;
+    this.renderUrnDigits();
+    this.updateUrnStatus('white');
+    this.toggleConfirmButton(true);
+  }
+
+  pressCorrect() {
+    this.lookupToken += 1;
+    this.typedDigits = '';
+    this.currentCandidateResult = null;
+    this.renderUrnDigits();
+    this.updateUrnStatus('idle');
+    this.toggleConfirmButton(false);
+  }
+
+  async handleNumberComplete() {
+    const config = OFFICES_CONFIG[this.currentStepIndex];
+    const token = ++this.lookupToken;
+    const typed = this.typedDigits;
+    this.updateUrnStatus('loading');
+    this.toggleConfirmButton(false);
+
+    try {
+      const result = await this.fetchCandidate(config.officeApi, typed);
+      if (token !== this.lookupToken) return; // o usuário já corrigiu/mudou de cargo
+
+      const expectedUf = config.officeApi === 'PRESIDENTE' ? 'BR' : 'RS';
+      if (!result || !result.found || (result.uf && result.uf !== expectedUf)) {
+        this.currentCandidateResult = null;
+        this.updateUrnStatus('error', this.cleanMessage(result?.error || 'Candidato não encontrado na base local.'));
+        this.toggleConfirmButton(false);
+        return;
+      }
+
+      this.currentCandidateResult = result;
+      this.updateUrnStatus('found', result);
+      this.toggleConfirmButton(true);
+    } catch (err) {
+      if (token !== this.lookupToken) return;
+      this.updateUrnStatus('error', this.cleanMessage(err?.message || 'Erro ao consultar a base local.'));
+      this.toggleConfirmButton(false);
+    }
+  }
+
+  cleanMessage(message) {
+    return String(message || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 220);
+  }
+
+  updateUrnStatus(type, payload = null) {
+    ['loading', 'found', 'white', 'error', 'idle'].forEach((s) => {
+      document.getElementById(`urn-status-${s}`).hidden = true;
+    });
+
+    const wrap = document.getElementById('urn-candidate-photo-wrapper');
+    const img = document.getElementById('urn-candidate-photo');
+    const fb = document.getElementById('urn-candidate-photo-fallback');
+    wrap.hidden = true;
+    img.hidden = true;
+
+    if (type === 'loading') {
+      document.getElementById('urn-status-loading').hidden = false;
+    } else if (type === 'white') {
+      document.getElementById('urn-status-white').hidden = false;
+    } else if (type === 'error') {
+      document.getElementById('urn-error-message').textContent = payload || 'Número inválido.';
+      document.getElementById('urn-status-error').hidden = false;
+    } else if (type === 'found') {
+      document.getElementById('urn-status-found').hidden = false;
+      document.getElementById('urn-candidate-name').textContent = payload.name;
+      const p = payload.party || {};
+      document.getElementById('urn-candidate-party').textContent =
+        [p.acronym, p.name].filter(Boolean).join(' • ');
+      wrap.hidden = false;
+      this.setPhoto(img, fb, payload.photoUrl);
+    } else {
+      document.getElementById('urn-status-idle').hidden = false;
+    }
+  }
+
+  toggleConfirmButton(enabled) {
+    document.getElementById('btn-confirm').disabled = !enabled;
+  }
+
+  async pressConfirm() {
+    const config = OFFICES_CONFIG[this.currentStepIndex];
+
+    if (this.typedDigits === 'BRANCO') {
+      this.colinhaState[config.id] = {
+        officeTitle: config.title,
+        office: config.officeApi,
+        number: 'BRANCO',
+        name: 'VOTO EM BRANCO',
+        party: { acronym: '' },
+        isWhite: true,
+        confirmed: true
+      };
+    } else {
+      const c = this.currentCandidateResult;
+      if (!c || !c.found || this.typedDigits.length !== config.digits) return;
+      this.colinhaState[config.id] = {
+        officeTitle: config.title,
+        office: config.officeApi,
+        number: this.typedDigits,
+        name: c.name,
+        party: c.party,
+        gender: c.gender,
+        photoUrl: c.photoUrl,
+        confirmed: true
+      };
+    }
+
+    if (this.currentStepIndex < OFFICES_CONFIG.length - 1) {
+      this.setupUrnStep(this.currentStepIndex + 1);
+    } else {
+      this.goToStep('review');
+    }
+  }
+
+  // Teclado físico (desktop): 0-9, Enter = CONFIRMA, Backspace/Delete = CORRIGE
+  bindKeyboard() {
+    window.addEventListener('keydown', (e) => {
+      if (this.currentScreen !== 'urn' || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (/^[0-9]$/.test(e.key)) { this.pressKey(e.key); }
+      else if (e.key === 'Enter') {
+        if (!document.getElementById('btn-confirm').disabled && document.activeElement?.tagName !== 'BUTTON') this.pressConfirm();
+      } else if (e.key === 'Backspace' || e.key === 'Delete') { this.pressCorrect(); }
+    });
+  }
+
+  /* ---------- revisão ---------- */
+  renderReviewList() {
+    const container = document.getElementById('review-list');
+    container.innerHTML = '';
+    container.appendChild(this.reviewItem('Deputado Federal', this.colinhaState.DEPUTADO_FEDERAL, null));
+    OFFICES_CONFIG.forEach((cfg, idx) => {
+      container.appendChild(this.reviewItem(cfg.title, this.colinhaState[cfg.id], idx));
+    });
+  }
+
+  reviewItem(title, c, stepIdx) {
+    const div = document.createElement('div');
+    div.className = 'panel review-item';
+    const e = (v) => this.escapeHtml(v);
+
+    if (!c) {
+      div.innerHTML = `<div><div class="t">${e(title)}</div><div class="missing">Não preenchido</div></div>`;
+      return div;
+    }
+
+    const fixed = stepIdx === null;
+    const photo = c.photoUrl
+      ? `<img src="${e(c.photoUrl)}" alt="" onerror="this.remove()">`
+      : '';
+    const party = c.party?.acronym ? e(c.party.acronym) : '';
+
+    div.innerHTML = `
+      <div class="left">
+        <div class="review-photo${fixed ? ' fixed' : ''}">${photo}</div>
+        <div style="min-width:0">
+          <div class="t">${e(title)}${fixed ? ' (fixo)' : ''}</div>
+          <div class="n">${e(c.name)}</div>
+          <div class="p">${party}</div>
+        </div>
+      </div>
+      <div class="right">
+        <span class="pill-num${fixed ? ' fixed' : ''}">${e(c.number)}</span>
+        ${fixed ? '' : `<button class="icon-btn" onclick="app.editStep(${stepIdx})" aria-label="Editar voto de ${e(title)}" title="Editar este voto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>
+        </button>`}
+      </div>`;
+    return div;
+  }
+
+  editStep(stepIdx) {
+    this.currentStepIndex = stepIdx;
+    this.goToStep('urn');
+  }
+
+  escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  /* ---------- imagens ---------- */
+  async getBase64Image(url) {
+    if (!url) return null;
+    try {
+      const response = await fetch(url, { method: 'GET', cache: 'no-store' });
+      if (!response.ok) throw new Error(`Imagem HTTP ${response.status}`);
+      const blob = await response.blob();
+      return await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(blob);
+      });
+    } catch (e) {
+      console.warn('Erro ao converter imagem em Base64:', e);
+      return null;
+    }
+  }
+
+  /* ---------- prévia = exportação (mesmo canvas, mesmo PNG) ---------- */
+  async generateExport() {
+    this.goToStep('export');
+
+    const loading = document.getElementById('export-loading');
+    const resultImg = document.getElementById('export-image-result');
+    const dims = document.getElementById('export-dims');
+    loading.hidden = false;
+    resultImg.hidden = true;
+    dims.textContent = '';
+    this.generatedBlob = null;
+
+    try {
+      const toImage = async (url) => cLoadImage(await this.getBase64Image(url));
+
+      const a = this.colinhaState.DEPUTADO_FEDERAL;
+      const anchor = {
+        label: 'DEPUTADO FEDERAL',
+        name: a.name,
+        number: String(a.number),
+        photo: await toImage(a.photoUrl)
+      };
+
+      const rows = [];
+      for (const cfg of OFFICES_CONFIG) {
+        const cand = this.colinhaState[cfg.id];
+        if (!cand) continue;
+        const g = cand.gender === 'FEMININO' ? 'F' : 'M';
+        rows.push({
+          label: CARD_LABELS[cfg.id][g],
+          name: cand.name || 'Candidato',
+          number: String(cand.number || ''),
+          isWhite: !!cand.isWhite,
+          photo: cand.photoUrl ? await toImage(cand.photoUrl) : null
+        });
+      }
+
+      const canvas = await renderColinhaCanvas({ anchor, rows });
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) throw new Error('Não foi possível criar o PNG.');
+
+      this.generatedBlob = blob;
+      if (this.previewUrl) URL.revokeObjectURL(this.previewUrl);
+      this.previewUrl = URL.createObjectURL(blob);
+      resultImg.src = this.previewUrl;
+      resultImg.hidden = false;
+      dims.textContent = `Imagem final: ${canvas.width} × ${canvas.height} px`;
+      loading.hidden = true;
+    } catch (err) {
+      console.error('Erro na geração da imagem:', err);
+      loading.hidden = true;
+      alert('Erro ao gerar a imagem da colinha. Tente novamente.');
+    }
+  }
+
+  downloadImage() {
+    if (!this.generatedBlob) return;
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(this.generatedBlob);
+    link.download = `${FILE_BASENAME}.png`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+  }
+
+  async shareImage() {
+    if (!this.generatedBlob) return;
+    const file = new File([this.generatedBlob], `${FILE_BASENAME}.png`, { type: 'image/png' });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: 'Minha Colinha 2026 - Pedro Ribeiro 1223',
+          text: 'Minha colinha para as Eleições 2026 no Rio Grande do Sul.'
+        });
+      } catch (e) {
+        console.warn('Compartilhamento cancelado pelo usuário.');
+      }
+    } else {
+      this.downloadImage();
+      alert('O compartilhamento direto não é suportado neste navegador. A imagem foi baixada para você enviar ao Instagram!');
+    }
+  }
+}
+
+let app;
+window.addEventListener('DOMContentLoaded', () => { app = new ColinhaApp(); });
+  </script>
+</body>
+</html>
